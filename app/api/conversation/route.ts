@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import type { ConversationRequest, UserProfile, FitnessLevel } from '@/lib/types';
+import type { ConversationRequest, FitnessLevel } from '@/lib/types';
 import { WORKOUT_TYPE_LABELS, GOAL_LABELS } from '@/lib/types';
 
 const TAVUS_API_BASE = 'https://tavusapi.com/v2';

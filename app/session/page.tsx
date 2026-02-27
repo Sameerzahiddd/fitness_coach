@@ -23,11 +23,6 @@ const COACH_TAGLINES: Record<string, string> = {
   'zen-master': 'Breathe. Move. Be present.',
 };
 
-const COACH_ICONS: Record<string, string> = {
-  'drill-sergeant': '⚡',
-  'hype-beast': '🔥',
-  'zen-master': '☯',
-};
 
 const CONNECTING_LINES: Record<string, string[]> = {
   'drill-sergeant': ['ANALYZING YOUR PROFILE...', 'BUILDING YOUR MISSION PLAN...', 'CALIBRATING FORM SENSORS...', 'NO EXCUSES MODE: ON'],

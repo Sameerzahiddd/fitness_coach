@@ -110,6 +110,7 @@ export const Conversation = React.memo(({ onLeave, conversationUrl }: Conversati
 	}, [meetingState, onLeave]);
 
 	// Initialize call when conversation is available
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	useEffect(() => {
 		joinCall({ url: conversationUrl });
 	}, []);
