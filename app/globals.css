@@ -277,8 +277,3 @@ body {
   animation: marquee 20s linear infinite;
 }
 
-/* ── Tavus CVI override ─────────────────────────── */
-/* Give full height to the CVI container */
-[class*="conversation"] {
-  height: 100% !important;
-}

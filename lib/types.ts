@@ -86,7 +86,7 @@ export interface ConversationRequest {
   workoutType: WorkoutType;
   coachPersonality: CoachPersonality;
   duration: SessionDuration;
-  userName?: string;
+  userProfile?: UserProfile;
 }
 
 export interface ConversationResponse {

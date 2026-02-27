@@ -120,8 +120,8 @@ export const Conversation = React.memo(({ onLeave, conversationUrl }: Conversati
 	}, [leaveCall, onLeave]);
 
 	return (
-		<div className={styles.container}>
-			<div className={styles.videoContainer}>
+		<div className={styles.container} style={{ position: 'fixed', inset: 0, width: '100vw', height: '100vh', aspectRatio: 'unset', borderRadius: 0, maxHeight: '100vh', background: '#000' }}>
+			<div className={styles.videoContainer} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
 				{
 					hasMicError && (
 						<div className={styles.errorContainer}>
@@ -132,12 +132,12 @@ export const Conversation = React.memo(({ onLeave, conversationUrl }: Conversati
 					)}
 
 				{/* Main video */}
-				<div className={styles.mainVideoContainer}>
+				<div className={styles.mainVideoContainer} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
 					<MainVideo />
 				</div>
 
 				{/* Self view */}
-				<div className={styles.selfViewContainer}>
+				<div className={styles.selfViewContainer} style={{ position: 'absolute', bottom: '5rem', right: '1rem', left: 'auto', zIndex: 30 }}>
 					<PreviewVideos />
 				</div>
 			</div>

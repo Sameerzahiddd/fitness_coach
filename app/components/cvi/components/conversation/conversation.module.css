@@ -1,109 +1,63 @@
+/* ── Full-screen CVI Container ──────────────────────────────────── */
 .container {
-	position: relative;
-	width: 100%;
-	text-align: center;
+	position: fixed;
+	inset: 0;
+	width: 100vw;
+	height: 100vh;
+	background: #000;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	aspect-ratio: 9/16;
 	overflow: hidden;
-	border-radius: 0.5rem;
-	max-height: 90vh;
-  background: linear-gradient(135deg, #4b5563 0%, #1f2937 100%);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
-}
-
-@media (min-width: 768px) {
-	.container {
-		aspect-ratio: 16/9;
-	}
+	z-index: 1;
 }
 
 .errorContainer {
-	position: relative;
+	position: absolute;
+	inset: 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: rgba(248, 250, 252, 0.08);
-	color: white;
-	height: 100%;
-	font-size: 1.5rem;
-	font-weight: 600;
+	background: rgba(0, 0, 0, 0.85);
+	color: #ff4444;
+	font-size: 1rem;
+	font-weight: 500;
 	text-align: center;
+	padding: 2rem;
+	z-index: 10;
+	backdrop-filter: blur(8px);
 }
 
+/* ── Video Layer ─────────────────────────────────────────────────── */
 .videoContainer {
 	position: relative;
-	z-index: 5;
 	width: 100%;
 	height: 100%;
+	flex: 1;
 }
 
-.footer {
-	position: absolute;
-	bottom: 1.5rem;
-	left: 0;
-	right: 0;
-	z-index: 20;
-}
-
-.footerControls {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 16px;
-}
-
-.leaveButton {
-	background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
-	color: white;
-	border: none;
-	font-size: 16px;
-	cursor: pointer;
-	transition: all 0.3s ease;
-	height: 3rem;
-	width: 3rem;
-	border-radius: 9999px;
-	background-color: #ef4444;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.leaveButton:hover {
-	opacity: 0.8;
-}
-
-.leaveButtonIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ReplicaVideo styles */
+/* ── Main (Replica) Video ────────────────────────────────────────── */
 .mainVideoContainer {
-	background: transparent;
+	position: absolute;
+	inset: 0;
 	width: 100%;
 	height: 100%;
-	position: relative;
+	background: #0a0a0a;
 }
 
 .mainVideoContainerScreenSharing {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background: #000;
 }
 
 .mainVideo {
 	position: absolute;
 	inset: 0;
-	object-position: center;
-	object-fit: cover !important;
-	height: 100%;
 	width: 100%;
-	transition: all 0.3s ease;
+	height: 100%;
+	object-fit: cover;
+	object-position: center top;
 }
 
 .mainVideoScreenSharing {
@@ -111,58 +65,80 @@
 }
 
 .mainVideoHidden {
-	display: none;
+	opacity: 0;
 }
 
-/* PreviewVideo styles */
+/* ── Connecting State ────────────────────────────────────────────── */
+.waitingContainer {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: #000;
+	color: white;
+	gap: 1.5rem;
+}
+
+.waitingContainer p {
+	font-family: 'Space Mono', monospace;
+	font-size: 0.75rem;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.4);
+	animation: blink-wait 1.4s step-end infinite;
+}
+
+@keyframes blink-wait {
+	0%, 100% { opacity: 0.4; }
+	50% { opacity: 1; }
+}
+
+/* ── Self View (User Camera) ─────────────────────────────────────── */
+.selfViewContainer {
+	position: absolute;
+	bottom: 5.5rem;
+	right: 1.25rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	z-index: 30;
+}
+
 .previewVideoContainer {
 	position: relative;
-	background: rgba(2, 6, 23, 0.3);
-	aspect-ratio: 16/9;
 	width: 11rem;
-	border-radius: 1rem;
+	aspect-ratio: 16/9;
+	border-radius: 6px;
 	overflow: hidden;
-	max-height: 120px;
-	z-index: 10;
+	background: rgba(0, 0, 0, 0.6);
+	border: 1px solid rgba(0, 255, 136, 0.25);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.6), 0 0 10px rgba(0, 255, 136, 0.1);
 }
 
 @media (min-width: 768px) {
 	.previewVideoContainer {
-		max-height: 100%;
-	}
-}
-
-@media (min-width: 1024px) {
-	.previewVideoContainer {
-		width: 17.875rem;
+		width: 14rem;
 	}
 }
 
 .previewVideoContainerVertical {
-	height: 40.5rem;
-	width: 6rem;
+	aspect-ratio: 9/16;
+	width: 7rem;
 }
 
 .previewVideoContainerHidden {
-	background: transparent;
 	display: none;
 }
 
 .previewVideo {
 	width: 100%;
-	height: auto;
-	max-height: 120px;
-}
-
-@media (min-width: 768px) {
-	.previewVideo {
-		max-height: 100%;
-	}
+	height: 100%;
+	object-fit: cover;
 }
 
 .previewVideoVertical {
-	height: 40.5rem;
-	width: 6rem;
 	object-fit: cover;
 }
 
@@ -170,59 +146,63 @@
 	display: none;
 }
 
-/* Main video container */
-.mainVideoContainer {
-	width: 100%;
-	height: 100%;
-}
-
-/* Self view container */
-.selfViewContainer {
-	position: absolute;
-	bottom: 5rem;
-	left: 1rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	gap: 0.75rem;
-}
-
-@media (min-width: 768px) {
-	.selfViewContainer {
-		bottom: 1rem;
-	}
-}
-
-/* Waiting message container */
-/* Start of Selection */
-.waitingContainer {
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: transparent;
-	color: white;
-	height: 100%;
-	font-size: 1.5rem;
-	font-weight: 600;
-}
-
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
-/* End of Selection */
-
+/* ── Audio Wave ──────────────────────────────────────────────────── */
 .audioWaveContainer {
 	position: absolute;
-	bottom: 0.5rem;
-	right: 0.5rem;
+	bottom: 0.4rem;
+	right: 0.4rem;
+	opacity: 0.8;
+}
+
+/* ── Footer Controls ─────────────────────────────────────────────── */
+.footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 40;
+	padding: 1rem;
+	background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+	display: flex;
+	justify-content: center;
+}
+
+.footerControls {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 0.5rem 1rem;
+	background: rgba(10, 10, 10, 0.7);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 100px;
+	backdrop-filter: blur(16px);
+}
+
+/* ── Leave Button ────────────────────────────────────────────────── */
+.leaveButton {
+	height: 2.5rem;
+	width: 2.5rem;
+	border-radius: 50%;
+	background: rgba(239, 68, 68, 0.15);
+	border: 1px solid rgba(239, 68, 68, 0.4);
+	color: #ef4444;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.leaveButton:hover {
+	background: rgba(239, 68, 68, 0.35);
+	border-color: #ef4444;
+	box-shadow: 0 0 16px rgba(239, 68, 68, 0.3);
+	transform: scale(1.05);
+}
+
+.leaveButtonIcon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }

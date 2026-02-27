@@ -213,7 +213,6 @@ export default function PlanPage() {
                   </div>
                 </div>
 
-                {/* Exercise list (collapsed by default, shown on hover via CSS or expand) */}
                 {day.exercises.length > 0 && (
                   <div className="px-5 pb-4 border-t border-border/50">
                     <div className="pt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">

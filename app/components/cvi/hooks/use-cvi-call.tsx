@@ -12,14 +12,9 @@ export const useCVICall = (): {
 	const joinCall = useCallback(
 		({ url }: { url: string }) => {
 			daily?.join({
-				url: url,
-				inputSettings: {
-					audio: {
-						processor: {
-							type: "noise-cancellation",
-						},
-					},
-				},
+				url,
+				startVideoOff: false,
+				startAudioOff: false,
 			});
 		},
 		[daily]

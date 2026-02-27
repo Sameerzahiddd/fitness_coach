@@ -1,70 +1,75 @@
-/* SelectDevice styles */
+/* ── Device Select Dropdown ──────────────────────────────────────── */
 .selectDevice {
-	height: 3rem;
-	width: 5.5rem;
-	border-radius: 9999px;
-	background-color: rgba(255, 255, 255, 0.2);
-	padding: 0 0.75rem;
-	border: 1px solid rgba(255, 255, 255, 0.2);
-	backdrop-filter: blur(10px);
+	height: 2.5rem;
+	width: 5rem;
+	border-radius: 100px;
+	background-color: transparent;
+	border: none;
 	color: transparent;
-	padding-right: 2rem; /* space for arrow */
+	padding-right: 1.5rem;
 	box-sizing: border-box;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
 	cursor: pointer;
-}
-
-.selectDevice::-ms-expand {
-	display: none;
+	position: absolute;
+	inset: 0;
 }
 
 .selectDevice option {
-	color: transparent;
-	background-color: transparent;
+	color: #fff;
+	background-color: #111;
 }
 
 .selectDevice:focus {
 	outline: none;
 }
 
-/* Device button container styles */
+/* ── Device Button Container ─────────────────────────────────────── */
 .deviceButtonContainer {
 	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-radius: 9999px;
-	backdrop-filter: blur(4px);
+	border-radius: 100px;
 }
 
-/* Device button styles */
+/* ── Device Button (mic/camera toggle) ──────────────────────────── */
 .deviceButton {
 	position: absolute;
 	left: 0;
 	top: 0;
 	z-index: 10;
-	height: 3rem;
-	width: 3rem;
-	border-radius: 9999px;
-	background-color: white;
+	height: 2.5rem;
+	width: 2.5rem;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	color: rgba(255, 255, 255, 0.8);
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border: 1px solid transparent;
 	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.deviceButton:hover {
+	background: rgba(255, 255, 255, 0.15);
+	border-color: rgba(255, 255, 255, 0.3);
+}
+
+.deviceButton:disabled {
+	opacity: 0.3;
+	cursor: not-allowed;
 }
 
 .deviceButtonIcon {
 	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.deviceButton:disabled {
-	opacity: 0.5;
-}
-
-/* Screen reader only text */
+/* ── Screen Reader Only ──────────────────────────────────────────── */
 .srOnly {
 	position: absolute;
 	width: 1px;
@@ -77,10 +82,10 @@
 	border-width: 0;
 }
 
-/* Controls container */
+/* ── Controls Container ──────────────────────────────────────────── */
 .controlsContainer {
 	display: flex;
-	gap: 1rem;
+	gap: 0.5rem;
 	justify-content: center;
 	align-items: center;
 }
@@ -89,27 +94,37 @@
 	position: relative;
 	display: flex;
 	align-items: center;
+	height: 2.5rem;
+	width: 2.5rem;
 }
 
 .selectArrow {
 	position: absolute;
-	right: 1rem;
+	right: -0.75rem;
 	pointer-events: none;
 	display: flex;
 	align-items: center;
 	height: 100%;
+	color: rgba(255,255,255,0.4);
+	z-index: 20;
 }
 
+/* ── Screen Share Button ─────────────────────────────────────────── */
 .screenShareButton {
 	cursor: pointer;
-	position: relative;
-	height: 3rem;
-	width: 3rem;
+	height: 2.5rem;
+	width: 2.5rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-radius: 9999px;
-	backdrop-filter: blur(4px);
-	background-color: rgba(255, 255, 255, 0.2);
-	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	color: rgba(255, 255, 255, 0.8);
+	transition: all 0.2s ease;
+}
+
+.screenShareButton:hover {
+	background: rgba(255, 255, 255, 0.15);
+	border-color: rgba(255, 255, 255, 0.3);
 }
