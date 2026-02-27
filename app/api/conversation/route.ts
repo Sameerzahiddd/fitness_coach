@@ -47,10 +47,6 @@ export async function POST(request: Request) {
     replica_id: replicaId,
     conversation_name: conversationName,
     conversational_context: conversationalContext,
-    properties: {
-      enable_recording: false,
-      apply_conversation_config: true,
-    },
   };
 
   const res = await fetch(`${TAVUS_API_BASE}/conversations`, {
